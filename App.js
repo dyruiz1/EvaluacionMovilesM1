@@ -85,7 +85,7 @@ export default function App() {
    const list = () => {
     
       if(listCreditos.length>0){
-        return (<View style={{flex:1,justifyContent:'center',alignItems:'center',marginTop:'10%',backgroundColor:'#808080'}}>
+        return (<View style={{flex:1,justifyContent:'center',alignItems:'center',marginTop:'10%',backgroundColor:'#f1fcf1'}}>
                 <View style={{flexDirection:'row'}}>
                   <View style={{width:80,backgroundColor:'transparent'}}>
                     <Text style={{border:'solid 1px',width:80}}>Nombre</Text>
@@ -186,98 +186,102 @@ export default function App() {
           <View style={styleapp.columna1}>
           <View style={styleapp.containers}>
           <Text style={styleapp.textBody}>Nombre: </Text> 
-          <TextInput 
-            placeholder='Ingrese Nombre' 
-            style={{borderBottom:'solid 1px',width:100}}
-            onChangeText={nombre => setNombre(nombre)}
-            value={nombre}
-            ref={refNombre}/>
           </View>
           <View style={styleapp.containers}>
             <Text style={styleapp.textBody}>Monto Préstamo: </Text>
-            <TextInput keyboardType = 'numeric'
-              onChangeText={mpres => {
-                //if (parseFloat(mpres)>=12000000&&parseFloat(mpres)<=100000000){
-                  setMpres(mpres)
-                // }else{
-                  
-                // }
-                }
-                }
-              value={mpres}
-              style={{borderBottom:'solid 1px'}}
-              placeholder='Entre 1 a 100 millones' />
           </View>
           <View style={styleapp.containers}>
           <Text style={styleapp.textBody}>Número de cuotas: </Text>
-            <TextInput keyboardType = 'numeric'
+            
+          </View>
+          <View style={styleapp.containers}>
+            
+              <Text style={styleapp.textBody}>Fecha: </Text>
+              
+          </View>
+              
+          </View>
+          <View style={{marginTop:30,flex:1}}>
+            <TextInput 
+              placeholder='Ingrese Nombre' 
+              style={{borderBottom:'solid 1px'}}
+              onChangeText={nombre => setNombre(nombre)}
+              value={nombre}
+              ref={refNombre}/>
+              <TextInput keyboardType = 'numeric'
+              onChangeText={mpres => {
+                  setMpres(mpres)
+                }
+                }
+              value={mpres}
+              style={{borderBottom:'solid 1px',marginTop:30}}
+              placeholder='Entre 1 a 100 millones' />
+
+              <TextInput keyboardType = 'numeric'
               onChangeText={cuotas => {
                 
                 setCuotas(cuotas)
               }}
               value={cuotas}
-              style={{borderBottom:'solid 1px'}}
+              style={{borderBottom:'solid 1px',marginTop:30}}
               placeholder='entre 12 y 36 cuotas' />
-          </View>
-          <View style={styleapp.containers}>
-            
-              <Text style={styleapp.textBody}>Fecha: </Text>
+
               <TextInput keyboardType = 'numeric'
               placeholder='ejemplo 13/09/2022'
               onChangeText={fecha => setFecha(fecha)}
               value={fecha}
-              style={{borderBottom:'solid 1px'}}
+              style={{borderBottom:'solid 1px',marginTop:30}}
                 />
           </View>
-              
-          </View>
-
-          <View style={styleapp.columna2}>
+          <View style={[styleapp.columna2,{marginLeft:40}]}>
             <View style={styleapp.containers}>
               
               <Text style={styleapp.textBody}>Tipo Préstamo: </Text>
-              <TextInput 
-              onChangeText={tpres => CALCULAR(tpres)}
-              value={tpres}
-              style={{borderBottom:'solid 1px'}}
-              placeholder='vivienda,educativo o libre inversion'
-              />
+              
 
             </View>
             <View style={styleapp.containers}>
               <Text style={styleapp.textBody}>Valor de Cuota: </Text>
-            <TextInput keyboardType = 'numeric'
-              onChangeText={vcuota => setVcuota(vcuota)}
-              value={vcuota}
-              style={{borderBottom:'solid 1px'}}
-               />
+            
             </View>
             <View style={styleapp.containers}>
-              <Text style={{marginTop:50}}>Total Deuda: </Text>
+              <Text style={{marginTop:57}}>Total Deuda: </Text>
               
+              
+               
+            </View>
+          </View>
+          <View style={styleapp.columna2}>
+            <TextInput 
+                onChangeText={tpres => CALCULAR(tpres)}
+                value={tpres}
+                style={{borderBottom:'solid 1px',marginTop:30,alignContent:'flex-start'}}
+                placeholder='vivienda,educativo o libre inversion'
+                />
+                <TextInput keyboardType = 'numeric'
+              onChangeText={vcuota => setVcuota(vcuota)}
+              value={vcuota}
+              style={{borderBottom:'solid 1px',marginTop:30}}
+               />
               <TextInput keyboardType = 'numeric'
               onChangeText={tdeuda => setTdeuda(tdeuda)}
               value={tdeuda}
-              style={{borderBottom:'solid 1px',marginTop:50}}
+              style={{borderBottom:'solid 1px',marginTop:85}}
               />
-              {/* <ul>{listCreditos.map((credito)=>{
-                <Text>{credito.nombre} oeoe</Text>
-              })}</ul> */}    
-            </View>
           </View>
           <View style={styleapp.columna3} >
           <TouchableOpacity View style={styleapp.styleboton} onPress={()=>guardar()}>
-              <Text >Calcular/Guardar</Text>
+              <Text style={{color:'white'}}>Calcular/Guardar</Text>
             </TouchableOpacity>
             <TouchableOpacity
             View style={styleapp.styleboton}    
             >
-              <Text >Buscar</Text>
+              <Text style={{color:'white'}}>Buscar</Text>
             </TouchableOpacity>
             <TouchableOpacity
             View style={styleapp.styleboton}     
             >
-              <Text >Limpiar</Text>
+              <Text style={{color:'white'}}>Limpiar</Text>
             </TouchableOpacity>
           </View>
         </View>

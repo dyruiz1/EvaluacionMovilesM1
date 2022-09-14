@@ -11,11 +11,13 @@ const styles = StyleSheet.create({
 
 const styleheader = StyleSheet.create({
     container:{
-        flex:1,
+        
         width:'90%',
+        height:40,
         justifyContent: 'center',
         alignItems:'center',
-        backgroundColor: 'orange'
+        backgroundColor: '#fff7eb',
+        border:'solid 1px'
     },
     
     himagen:{
@@ -33,39 +35,38 @@ const styleapp = StyleSheet.create({
         marginTop:30,
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'left',
+        
     },
     container:{
         flex:1,
         width:'90%',
-        backgroundColor:'#808080',
+        backgroundColor:'#f1fcf1',
         flexDirection:'row',
         marginTop:10
         
     },
     containerb:{
-        flex:3,
+        flex:2,
         width:'90%',
-        backgroundColor:'#808080',
+        backgroundColor:'#f1fcf1',
         marginTop:10
     },
-    column1:{
+    columna1:{
         flex:1,
-        alignItems:'center',
-        justifyContent: 'center',
         marginLeft:10
         
 
     },
     columna2:{
         flex:1,
-        alignItems:'left',
-        justifyContent:'left',
-        marginLeft:20
+        alignItems:'center',
+        justifyContent:'left'
+        
     },
     columna3:{
         flex:1,
-        alignItems:'center'
+        alignItems:'center',
+        marginTop: 30
     },
     textBody:{
         
@@ -76,13 +77,14 @@ const styleapp = StyleSheet.create({
     //     borderBottom:'solid'
     // },
     styleboton:{
-        marginTop:30,
+        marginTop:20,
         backgroundColor:'green',
         padding:10,
-        borderRadius:10,
         marginRight:5,
         width:125,
-        alignItems:'center'
+        height:25,
+        alignItems:'center',
+        justifyContent:'center'
     }
 }) 
 
