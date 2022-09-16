@@ -4,15 +4,20 @@ import { styleform } from "../assets/styles/styles";
 import FormButtons from "./FormButtons";
 import InputRow from "./InputRow";
 import Tabla from "./Tabla";
-import { validarTodosLosCampos } from "./validacion";
+import {
+  validarTodosLosCampos,
+  getDefinitiva,
+  getObservacion,
+  validarNotas,
+} from "./validacion";
 
 export default function Form() {
-  const [identificacion, setIdentificacion] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [asignatura, setAsignatura] = useState("");
-  const [momentoUno, setMomentoUno] = useState("");
-  const [momentoDos, setMomentoDos] = useState("");
-  const [momentoTres, setMomentoTres] = useState("");
+  const [identificacion, setIdentificacion] = useState("12");
+  const [nombre, setNombre] = useState("x");
+  const [asignatura, setAsignatura] = useState("m");
+  const [momentoUno, setMomentoUno] = useState("2");
+  const [momentoDos, setMomentoDos] = useState("2");
+  const [momentoTres, setMomentoTres] = useState("2");
   const [definitiva, setDefinitiva] = useState("");
   const [observaciones, setObservaciones] = useState("");
 
@@ -76,29 +81,33 @@ export default function Form() {
       { valor: momentoDos, fnSetError: setMomentoDosError },
       { valor: momentoTres, fnSetError: setMomentoTresError },
     ]);
+    const notasValidas = validarNotas([
+      { valor: momentoUno, fnSetError: setMomentoUnoError },
+      { valor: momentoDos, fnSetError: setMomentoDosError },
+      { valor: momentoTres, fnSetError: setMomentoTresError },
+    ]);
 
-    // Validar que la identificacion no puede estar repetida
-    // Falta por hacerlo Aqui
-
-    console.log({ isValido });
-    if (!isValido) {
+    if (!isValido || !notasValidas) {
       return;
     }
 
     // Aqui ya todo esta bien validado y podemos empezar a guardar los nuevos registros
-    setNotas((notasPrev) => [
-      ...notasPrev,
-      {
-        identificacion,
-        nombre,
-        asignatura,
-        momentoUno,
-        momentoDos,
-        momentoTres,
-        definitiva: "algo 1",
-        observaciones: "algo 2",
-      },
-    ]);
+    setNotas((notasPrev) => {
+      const definitiva = getDefinitiva(momentoUno, momentoDos, momentoTres);
+      return [
+        ...notasPrev,
+        {
+          identificacion,
+          nombre,
+          asignatura,
+          momentoUno,
+          momentoDos,
+          momentoTres,
+          definitiva: parseInt(definitiva),
+          observaciones: getObservacion(definitiva),
+        },
+      ];
+    });
     onPressLimpiar();
   };
 
@@ -125,7 +134,7 @@ export default function Form() {
     const nota = notas.filter(
       (elemento) => elemento.identificacion === identificacion
     )[0];
-    console.log({ nota });
+
     if (nota) {
       setIdentificacion(nota.identificacion);
       setNombre(nota.nombre);
@@ -140,7 +149,7 @@ export default function Form() {
 
   return (
     <View style={styleform.container}>
-      <View>
+      <View style={styleform.formContainer}>
         <InputRow
           label="Identificacion:"
           mensajeError={identificacionError}

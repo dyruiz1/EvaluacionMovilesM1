@@ -1,44 +1,28 @@
-import { Text, View } from "react-native";
+import { View, Text } from "react-native";
+import TablaRow from "./TablaRow";
+import { tablaStyles } from "../assets/styles/styles";
 
 export default function Tabla({ notas }) {
-  return notas.map((element, index) => (
-    <View
-      key={`${element.identificacion}-${index}`}
-      style={{ flexDirection: "row" }}
-    >
-      <View style={{ width: 80, backgroundColor: "transparent" }}>
-        <Text style={{ border: "solid 1px", width: 80 }}>{element.nombre}</Text>
+  return (
+    <View>
+      <View style={tablaStyles.titulos}>
+        <Text style={tablaStyles.titulo}>Identificacion</Text>
+        <Text style={tablaStyles.titulo}>Nombre</Text>
+        <Text style={tablaStyles.titulo}>Asignatura</Text>
+        <Text style={tablaStyles.titulo}>Momento Uno</Text>
+        <Text style={tablaStyles.titulo}>Momento Dos</Text>
+        <Text style={tablaStyles.titulo}>Momento Tres</Text>
+        <Text style={tablaStyles.titulo}>Definitiva</Text>
+        <Text style={tablaStyles.titulo}>Observaciones</Text>
       </View>
-      <View style={{ width: 80, backgroundColor: "transparent" }}>
-        <Text style={{ border: "solid 1px", width: 60 }}>
-          {element.asignatura}
-        </Text>
-      </View>
-      <View style={{ width: 80, backgroundColor: "transparent" }}>
-        <Text style={{ border: "solid 1px", width: 60 }}>
-          {element.momentoUno}
-        </Text>
-      </View>
-      <View style={{ width: 80, backgroundColor: "transparent" }}>
-        <Text style={{ border: "solid 1px", width: 80 }}>
-          {element.momentoDos}
-        </Text>
-      </View>
-      <View style={{ width: 80, backgroundColor: "transparent" }}>
-        <Text style={{ border: "solid 1px", width: 75 }}>
-          {element.momentoTres}
-        </Text>
-      </View>
-      <View style={{ width: 80, backgroundColor: "transparent" }}>
-        <Text style={{ border: "solid 1px", width: 75 }}>
-          {element.definitiva}
-        </Text>
-      </View>
-      <View style={{ width: 80, backgroundColor: "transparent" }}>
-        <Text style={{ border: "solid 1px", width: 75 }}>
-          {element.observaciones}
-        </Text>
+      <View style={tablaStyles.container}>
+        {notas.map((element, index) => (
+          <TablaRow
+            element={element}
+            key={`${element.identificacion}-${index}`}
+          />
+        ))}
       </View>
     </View>
-  ));
+  );
 }

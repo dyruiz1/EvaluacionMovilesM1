@@ -33,7 +33,15 @@ const styleapp = StyleSheet.create({
 });
 
 const styleform = StyleSheet.create({
-  container: {},
+  container: {
+    width: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  formContainer: {
+    width: '50%'
+  },
   definitivaYObservaciones: {
     display: "flex",
     flexDirection: "row",
@@ -76,4 +84,42 @@ const formButtons = StyleSheet.create({
   },
 });
 
-export { styleheader, styleapp, styleform, styleInputRow, formButtons, styles };
+const tablaStyles = StyleSheet.create({
+  container: {
+    border: '2px solid #ccc',
+    borderRadius: '10px'
+  },
+  titulos: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: '10px',
+    backgroundColor: '#f2f2f2',
+    marginBottom: '5px',
+    border: '2px solid #ccc',
+    borderRadius: '10px',
+    gap: '10px',
+  },
+  titulo: {
+    
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: '10px',
+    backgroundColor: '#ccc',
+    borderBottomWidth: '1px',
+    borderBottomColor: '#f2f2f2'
+  },
+});
+
+export {
+  styleheader,
+  styleapp,
+  styleform,
+  styleInputRow,
+  formButtons,
+  tablaStyles,
+  styles,
+};
