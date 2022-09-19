@@ -103,7 +103,7 @@ export default function Form() {
           momentoUno,
           momentoDos,
           momentoTres,
-          definitiva: parseInt(definitiva),
+          definitiva:(definitiva),
           observaciones: getObservacion(definitiva),
         },
       ];

@@ -32,7 +32,7 @@ export const getDefinitiva = (mnota1, mnota2, mnota3) => {
     nota3 = nota3 * 0.35;
     let ndefinitiva = nota1 + nota2 + nota3;
 
-    return ndefinitiva;
+    return ndefinitiva.toFixed(2);
   }
 };
 export const getObservacion = (definitiva) => {
